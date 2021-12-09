@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -16,9 +17,11 @@ import java.util.List;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@SuperBuilder
 public abstract class Amendement {
 
-    @Id @GeneratedValue(strategy = GenerationType.TABLE)
+    @Id
+    @GeneratedValue(strategy = GenerationType.TABLE)
     Long id;
     @Temporal(TemporalType.DATE)
     @JsonFormat(pattern = "yyyy-MM-dd")
